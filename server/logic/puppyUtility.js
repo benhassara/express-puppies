@@ -24,7 +24,7 @@ function handlePost(puppyID, puppyName, puppyAge) {
   });
 
   if (pup.length > 0) {
-    return {message: 'Puppy already exists, idiot.'};
+    return {error: 'Puppy already exists, idiot.'};
   }
   else {
     var addPuppy = new puppyData.Puppy(
@@ -33,7 +33,7 @@ function handlePost(puppyID, puppyName, puppyAge) {
       +puppyAge
       );
     tmpArr.push(addPuppy);
-    return {message: 'success', puppy:addPuppy};
+    return {message: 'Puppy Added Successfully!', puppy:addPuppy};
   }
 }
 

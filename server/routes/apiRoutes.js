@@ -16,8 +16,16 @@ router.get('/puppy/:id', function(req, res, next) {
 
 // POST - add to list of puppies
 router.post('/puppies', function(req, res, next) {
-  var response = utilities.handlePost(req.body.puppyID, req.body.puppyName, req.body.puppyAge);
-  res.json(response);
+  var response = utilities.handlePost(req.body.puppyID,
+                                      req.body.puppyName,
+                                      req.body.puppyAge);
+  if (response.error) {
+    // refactor to correct error status
+    res.status(400).json(response);
+  }
+  else {
+    res.json(response);
+  }
 });
 
 // update a single puppy
